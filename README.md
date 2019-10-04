@@ -17,7 +17,7 @@ of UI details, which will be encapsulated in the robot.
 
 ![app](art/app_architecture.png)
 
-![testing](art/testing_architecture.png)
+![testing](art/test_architecture.png)
 
 This way you can write the behavior of the test like this:
 
