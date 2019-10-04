@@ -10,29 +10,31 @@ import android.view.View.*
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainView {
+class CreateAdActivity : AppCompatActivity(), CreateAdView {
 
-    private lateinit var presenter: Presenter
+    private lateinit var createAdPresenter: CreateAdPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter = Presenter(this)
+        createAdPresenter = CreateAdPresenter(this)
         initViews()
     }
 
     override fun showCreateAdOk() {
-        with (createResultTextView) {
-            show()
-            text = "Ad model is OK"
-        }
+        successTextView.show()
+    }
+
+    override fun hideCreateAdOk() {
+        successTextView.hide()
     }
 
     override fun showCreateAdError() {
-        with (createResultTextView) {
-            show()
-            text = "Ad model is not OK"
-        }
+        errorTextView.show()
+    }
+
+    override fun hideCreateAdError() {
+        errorTextView.hide()
     }
 
     private fun initViews() {
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity(), MainView {
         sizeEditText.addTextChangedListener(editTextWatcher)
         createButton.setOnClickListener {
             hideKeyboard()
-            presenter.onCreateClicked(price(), size())
+            createAdPresenter.onCreateClicked(price(), size())
         }
     }
 
@@ -50,7 +52,8 @@ class MainActivity : AppCompatActivity(), MainView {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            createResultTextView.hide()
+            successTextView.hide()
+            errorTextView.hide()
         }
     }
 

@@ -1,9 +1,5 @@
 package io.github.vicfran.robottest
 
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
@@ -16,11 +12,15 @@ import org.junit.runner.RunWith
 class InstrumentedTests {
 
     @get:Rule
-    val activityRule = ActivityTestRule(MainActivity::class.java)
+    val activityRule = ActivityTestRule(CreateAdActivity::class.java)
 
     @Test
-    fun createButtonIsVisible() {
-        onView(withId(R.id.createButton)).check(matches(isDisplayed()))
+    fun setPriceAndAreaCreateIsSuccess() {
+        val createAdRobot = CreateAdRobot()
+        createAdRobot.price(750.0f)
+        createAdRobot.size(250.0f)
+        createAdRobot.create()
+        createAdRobot.isSuccess()
     }
 
 }

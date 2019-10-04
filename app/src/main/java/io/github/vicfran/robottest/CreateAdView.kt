@@ -1,6 +1,8 @@
 package io.github.vicfran.robottest
 
-interface MainView {
+interface CreateAdView {
     fun showCreateAdOk()
+    fun hideCreateAdOk()
     fun showCreateAdError()
+    fun hideCreateAdError()
 }

@@ -1,6 +1,6 @@
 package io.github.vicfran.robottest
 
-class Presenter(private val view: MainView) {
+class CreateAdPresenter(private val view: CreateAdView) {
 
     fun onCreateClicked(price: Float?, size: Float?) {
         price?.let { price ->
