@@ -16,34 +16,39 @@ class InstrumentedTests {
 
     @Test
     fun setPriceAndSizeCreateIsSuccess() {
-        CreateAdRobot()
-            .price(750.0f)
-            .size(250.0f)
-            .create()
-            .isSuccess()
+        ad {
+            price(750f)
+            size(250f)
+        } create {
+            isSuccess()
+        }
     }
 
     @Test
     fun unsetPriceAndSizeCreateError() {
-        CreateAdRobot()
-            .create()
-            .isError()
+        ad {
+
+        } create {
+            isError()
+        }
     }
 
     @Test
     fun setPriceUnsetSizeCreateError() {
-        CreateAdRobot()
-            .price(750f)
-            .create()
-            .isError()
+        ad {
+            price(750f)
+        } create {
+            isError()
+        }
     }
     
     @Test
     fun unsetPriceSetSizeCreateError() {
-        CreateAdRobot()
-            .size(250f)
-            .create()
-            .isError()
+        ad {
+            size(250f)
+        } create {
+            isError()
+        }
     }
 
 }

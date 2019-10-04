@@ -9,29 +9,28 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 
 class CreateAdRobot {
 
-    fun price(price: Float): CreateAdRobot {
+
+    fun price(price: Float) {
         onView(withId(R.id.priceEditText)).perform(typeText(price.toString()))
-        return this
     }
 
-    fun size(size: Float): CreateAdRobot {
+    fun size(size: Float) {
         onView(withId(R.id.sizeEditText)).perform(typeText(size.toString()))
-        return this
     }
 
-    fun create(): CreateAdRobot {
+    infix fun create(func: CreateAdRobot.() -> Unit): CreateAdRobot {
         onView(withId(R.id.createButton)).perform(click())
-        return this
+        return CreateAdRobot().apply { func() }
     }
 
-    fun isSuccess(): CreateAdRobot {
+    fun isSuccess() {
         onView(withId(R.id.successTextView)).check(matches(isDisplayed()))
-        return this
     }
 
-    fun isError(): CreateAdRobot {
+    fun isError() {
         onView(withId(R.id.errorTextView)).check(matches(isDisplayed()))
-        return this
     }
 
 }
+
+fun ad(func: CreateAdRobot.() -> Unit) = CreateAdRobot().apply { func() }
