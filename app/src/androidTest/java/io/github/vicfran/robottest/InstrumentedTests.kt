@@ -15,12 +15,35 @@ class InstrumentedTests {
     val activityRule = ActivityTestRule(CreateAdActivity::class.java)
 
     @Test
-    fun setPriceAndAreaCreateIsSuccess() {
-        val createAdRobot = CreateAdRobot()
-        createAdRobot.price(750.0f)
-        createAdRobot.size(250.0f)
-        createAdRobot.create()
-        createAdRobot.isSuccess()
+    fun setPriceAndSizeCreateIsSuccess() {
+        CreateAdRobot()
+            .price(750.0f)
+            .size(250.0f)
+            .create()
+            .isSuccess()
+    }
+
+    @Test
+    fun unsetPriceAndSizeCreateError() {
+        CreateAdRobot()
+            .create()
+            .isError()
+    }
+
+    @Test
+    fun setPriceUnsetSizeCreateError() {
+        CreateAdRobot()
+            .price(750f)
+            .create()
+            .isError()
+    }
+    
+    @Test
+    fun unsetPriceSetSizeCreateError() {
+        CreateAdRobot()
+            .size(250f)
+            .create()
+            .isError()
     }
 
 }
