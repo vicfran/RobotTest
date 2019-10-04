@@ -10,13 +10,14 @@ This repo works on robot pattern in android UI testing with [espresso](https://d
 app consists of a simple activity containing two edit texts, one for setting price other for size and a create button. If both text fields are filled a success label will appear,
  in case of any error, an error label will appear.
 
-!![Video][./art/video.gif]
+![gif](art/video.gif)
 
 This UI testing strategy consists of applying robot pattern to wrap related espresso UI interactions outside test behavior. This pattern separates the **what** of the **how**. Gives you the power of defining a test to make without taking care
 of UI details, which will be encapsulated in the robot.
 
-![AppArchitecture][./art/app_architecture.png]
-![TestingArchitecture][./art/testing_architecture.png]
+![app](art/app_architecture.png)
+
+![testing](art/testing_architecture.png)
 
 This way you can write the behavior of the test like this:
 
