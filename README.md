@@ -41,6 +41,10 @@ You can use DSL power thanks to some of these kotlin features:
 
 
 ``` kotlin
+fun price(price: Float) {
+    onView(withId(R.id.priceEditText)).perform(typeText(price.toString()))
+}
+
 fun ad(func: CreateAdRobot.() -> Unit) = CreateAdRobot().apply { func() }
 
 infix fun create(func: CreateAdRobot.() -> Unit): CreateAdRobot {
